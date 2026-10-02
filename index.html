@@ -34,6 +34,7 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+      padding-bottom: 20px;
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(0, 136, 255, 0.12) 0%, transparent 50%),
         radial-gradient(circle at 50% 100%, rgba(230, 0, 126, 0.1) 0%, transparent 50%);
@@ -46,7 +47,7 @@
       margin: 0 auto;
     }
 
-    /* --- LOGO & HERO --- */
+    /* TOPO E LOGO */
     .brand-container {
       text-align: center;
       padding-top: 16px;
@@ -54,10 +55,10 @@
     }
 
     .star-trail-svg {
-      width: 200px;
+      width: 180px;
       height: auto;
       display: block;
-      margin: 0 auto -10px auto;
+      margin: 0 auto -8px auto;
       filter: drop-shadow(0 0 10px rgba(245, 184, 0, 0.4));
     }
 
@@ -69,10 +70,9 @@
     }
 
     .logo-text .line1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 900;
       color: #FFFFFF;
-      letter-spacing: -1px;
     }
 
     .logo-text .line2-wrapper {
@@ -82,19 +82,18 @@
       gap: 6px;
     }
 
-    .logo-text .de { font-size: 0.9rem; font-weight: 900; color: #FFFFFF; }
+    .logo-text .de { font-size: 0.85rem; font-weight: 900; color: #FFFFFF; }
     .logo-text .coragem {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 900;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -1px;
     }
 
     .hero-title {
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 900;
       text-transform: uppercase;
       margin: 12px 0 6px 0;
@@ -110,14 +109,15 @@
       text-transform: uppercase;
     }
 
-    /* --- FORMULÁRIO COMPACTO --- */
+    /* FORMULÁRIO COMPACTO E CENTRALIZADO */
     .form-card {
       background: var(--card-bg);
       color: var(--text-dark);
       border-radius: 12px;
       padding: 14px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      margin-bottom: 20px;
+      margin: 0 auto 20px auto;
+      width: 100%;
     }
 
     .form-card h2 {
@@ -125,7 +125,7 @@
       font-weight: 900;
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #0F172A;
     }
 
@@ -171,7 +171,6 @@
       cursor: pointer;
     }
 
-    /* --- TITULOS DE SEÇÃO --- */
     .section-header {
       text-align: center;
       font-size: 0.9rem;
@@ -180,7 +179,7 @@
       margin: 16px 0 12px 0;
     }
 
-    /* --- PRÊMIOS COMPACTOS --- */
+    /* PRÊMIOS */
     .premios-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -204,7 +203,7 @@
     .premio-title { font-size: 0.78rem; font-weight: 900; margin-bottom: 2px; }
     .premio-desc { font-size: 0.68rem; color: #64748B; line-height: 1.2; }
 
-    /* --- 10 MISSÕES SOCIAIS CLICÁVEIS --- */
+    /* 10 MISSÕES SOCIAIS CLICÁVEIS (COM ANIMAÇÃO DE CLIQUE) */
     .missions-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -221,22 +220,23 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-top: 3px solid var(--card-color);
       border-radius: 8px;
-      padding: 8px;
+      padding: 10px 8px;
       position: relative;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .mission-card:active {
-      transform: scale(0.97);
-      background: rgba(255, 255, 255, 0.12);
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .mission-pts {
       position: absolute;
       top: 4px;
       right: 4px;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       color: var(--card-color);
       font-size: 0.5rem;
       padding: 1px 4px;
@@ -244,11 +244,11 @@
       font-weight: 900;
     }
 
-    .mission-icon { font-size: 1.1rem; margin-bottom: 2px; }
+    .mission-icon { font-size: 1.2rem; margin-bottom: 2px; }
     .mission-num { font-size: 0.55rem; color: var(--text-muted); }
-    .mission-title { font-size: 0.68rem; font-weight: 800; color: #FFFFFF; }
+    .mission-title { font-size: 0.7rem; font-weight: 800; color: #FFFFFF; }
 
-    /* --- PATROCINADORES / BOTÃO LINK --- */
+    /* BOTÃO DE PATROCINADOR FUNCIONAL */
     .apoiadores-box {
       text-align: center;
       margin-bottom: 24px;
@@ -259,19 +259,12 @@
       background: transparent;
       border: 2px solid var(--gold-main);
       color: var(--gold-main);
-      padding: 8px 16px;
+      padding: 10px 18px;
       border-radius: 20px;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
       text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-patrocinador:hover {
-      background: var(--gold-main);
-      color: #000;
     }
 
     footer {
@@ -288,7 +281,7 @@
 
   <div class="container">
     
-    <!-- Topo + Logo -->
+    <!-- Topo -->
     <div class="brand-container">
       <svg class="star-trail-svg" viewBox="0 0 300 100" fill="none">
         <path d="M10 80 Q 150 70 240 25" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
@@ -312,11 +305,11 @@
       </div>
     </div>
 
-    <!-- Título Direto e Frase Solicitada -->
+    <!-- Título Principal -->
     <h1 class="hero-title">INSCREVA SUA ESCOLA E SEJA PROTAGONISTA DO MAIOR GAME SHOW DA BAHIA!</h1>
     <p class="hero-subtitle">27 Territórios de Identidade — Um passeio pelo conhecimento.</p>
 
-    <!-- Formulário Proporcional -->
+    <!-- Formulário -->
     <div class="form-card">
       <h2>CADASTRO DE ESCOLA E ESTUDANTES</h2>
       <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
@@ -353,73 +346,73 @@
       </div>
     </div>
 
-    <!-- 10 Missões Clicáveis -->
+    <!-- 10 Missões Sociais Clicáveis -->
     <h2 class="section-header">CENTRAL DAS 10 MISSÕES SOCIAIS</h2>
     <div class="missions-grid">
-      <div class="mission-card" style="--card-color: #FF3B30;" onclick="abrirMissao('Ação Solidária', 'Arrecadação de alimentos e doações para entidades locais.')">
+      <div class="mission-card" style="--card-color: #FF3B30;" onclick="clicarMissao('Ação Solidária')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">📦</div>
         <div class="mission-num">#01</div>
         <div class="mission-title">Ação Solidária</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #2ECC71;" onclick="abrirMissao('EcoLocal', 'Atividades de plantio e reciclagem comunitária.')">
+      <div class="mission-card" style="--card-color: #2ECC71;" onclick="clicarMissao('EcoLocal')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🌳</div>
         <div class="mission-num">#02</div>
         <div class="mission-title">EcoLocal</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #1E88E5;" onclick="abrirMissao('Conhecimento', 'Quizzes e desafios educativos inter-escolas.')">
+      <div class="mission-card" style="--card-color: #1E88E5;" onclick="clicarMissao('Conhecimento')">
         <span class="mission-pts">150 PTS</span>
         <div class="mission-icon">🧠</div>
         <div class="mission-num">#03</div>
         <div class="mission-title">Conhecimento</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #880E4F;" onclick="abrirMissao('Corrente pelo Bem', 'Campanha de incentivo à doação de sangue.')">
-        <span class="mission-pts">20 PTS/Doador</span>
+      <div class="mission-card" style="--card-color: #880E4F;" onclick="clicarMissao('Corrente pelo Bem')">
+        <span class="mission-pts">20 PTS</span>
         <div class="mission-icon">🩸</div>
         <div class="mission-num">#04</div>
         <div class="mission-title">Corrente pelo Bem</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #8E44AD;" onclick="abrirMissao('Cidadania Digital', 'Combate às fake news e conscientização nas redes.')">
+      <div class="mission-card" style="--card-color: #8E44AD;" onclick="clicarMissao('Cidadania Digital')">
         <span class="mission-pts">80 PTS</span>
         <div class="mission-icon">📱</div>
         <div class="mission-num">#05</div>
         <div class="mission-title">Cidadania Digital</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #E67E22;" onclick="abrirMissao('Peludos & Protegidos', 'Ações de apoio e arrecadação de ração para ONGs de animais.')">
+      <div class="mission-card" style="--card-color: #E67E22;" onclick="clicarMissao('Peludos & Protegidos')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🐾</div>
         <div class="mission-num">#06</div>
         <div class="mission-title">Peludos & Protegidos</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #F1C40F;" onclick="abrirMissao('Gerações', 'Visitas e integração com asilos e centros de idosos.')">
+      <div class="mission-card" style="--card-color: #F1C40F;" onclick="clicarMissao('Gerações')">
         <span class="mission-pts">120 PTS</span>
         <div class="mission-icon">👵</div>
         <div class="mission-num">#07</div>
         <div class="mission-title">Gerações</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #607D8B;" onclick="abrirMissao('RevitaBairro', 'Pintura e melhoria de espaços comunitários.')">
+      <div class="mission-card" style="--card-color: #607D8B;" onclick="clicarMissao('RevitaBairro')">
         <span class="mission-pts">150 PTS</span>
         <div class="mission-icon">🛠️</div>
         <div class="mission-num">#08</div>
         <div class="mission-title">RevitaBairro</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #FF4081;" onclick="abrirMissao('Cultura p/ Todos', 'Apresentações artísticas e valorização da cultura local.')">
+      <div class="mission-card" style="--card-color: #FF4081;" onclick="clicarMissao('Cultura p/ Todos')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🎨</div>
         <div class="mission-num">#09</div>
         <div class="mission-title">Cultura p/ Todos</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #00BCD4;" onclick="abrirMissao('Minha Cidade', 'Projetos de impacto histórico e turístico local.')">
+      <div class="mission-card" style="--card-color: #00BCD4;" onclick="clicarMissao('Minha Cidade')">
         <span class="mission-pts">130 PTS</span>
         <div class="mission-icon">💡</div>
         <div class="mission-num">#10</div>
@@ -427,10 +420,10 @@
       </div>
     </div>
 
-    <!-- Patrocinadores com Link Direto Clicável -->
+    <!-- Patrocinadores -->
     <div class="apoiadores-box">
       <h2 class="section-header">PATROCINADORES LOCAIS E GLOBAIS</h2>
-      <a href="mailto:contato@umpassodecoragem.com.br?subject=Quero%20ser%20Patrocinador" class="btn-patrocinador">
+      <a href="mailto:contato@umpassodecoragem.com.br?subject=Interesse%20em%20Patrocínio" class="btn-patrocinador">
         RESERVE SUA JANELA NO PAINEL
       </a>
     </div>
@@ -442,8 +435,8 @@
   </footer>
 
   <script>
-    function abrirMissao(nome, descricao) {
-      alert("Missão: " + nome + "\n\nDetalhes: " + descricao);
+    function clicarMissao(nome) {
+      alert('Você clicou na missão: ' + nome + '\nEm breve mais detalhes sobre esta ação!');
     }
   </script>
 </body>

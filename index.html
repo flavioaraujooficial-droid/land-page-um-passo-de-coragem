@@ -1,443 +1,190 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Um Passo de Coragem - Game Show Social</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,800;1,900&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --bg-dark: #070913;
-      --card-bg: #FFFFFF;
-      --gold-main: #F2C200;
-      --gold-gradient: linear-gradient(180deg, #FFE866 0%, #F5B800 50%, #C88A00 100%);
-      --text-white: #FFFFFF;
-      --text-dark: #0F172A;
-      --text-muted: #94A3B8;
-    }
+import React, { useState } from 'react';
+import { 
+  Video, CheckCircle, Heart, Leaf, Users, Paintbrush, 
+  Music, Activity, BookOpen, Award, Shield, Send 
+} from 'lucide-react';
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-    }
+export default function FormularioPiloto() {
+  const [enviado, setEnviado] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: '',
+    whatsapp: '',
+    escolaTerritorio: '',
+    videoLink: '',
+    cardsSelecionados: ['card_1'] // Card 1 (Superação) já selecionado por padrão
+  });
 
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow-x: hidden;
-      padding-bottom: 20px;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 136, 255, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 100%, rgba(230, 0, 126, 0.1) 0%, transparent 50%);
-    }
+  const cardsList = [
+    { id: 'card_1', titulo: '01. Minha História de Superação', desc: 'Vídeo gravado sobre sua trajetória e visão de futuro', icon: Video, obrigatorio: true },
+    { id: 'card_2', titulo: '02. Ação Solidária & Arrecadação', desc: 'Arrecadação de alimentos ou agasalhos no bairro', icon: Heart },
+    { id: 'card_3', titulo: '03. EcoLocal & Sustentabilidade', desc: 'Mutirão de reciclagem ou plantio de mudas', icon: Leaf },
+    { id: 'card_4', titulo: '04. Conexão de Gerações', desc: 'Suporte digital e escuta ativa com a terceira idade', icon: Users },
+    { id: 'card_5', titulo: '05. Revitaliza Bairro', desc: 'Pintura, horta comunitária ou reparo coletivo', icon: Paintbrush },
+    { id: 'card_6', titulo: '06. Cultura e Arte de Rua', desc: 'Apresentação ou registro de arte local', icon: Music },
+    { id: 'card_7', titulo: '07. Esporte & Saúde Comunitária', desc: 'Caminhada ou torneio esportivo de integração', icon: Activity },
+    { id: 'card_8', titulo: '08. Conhecimento & Mentoria', desc: 'Grupo de estudo ou reforço escolar', icon: BookOpen },
+    { id: 'card_9', titulo: '09. Liderança e Cidadania', desc: 'Mapear um desafio local e propor solução', icon: Award },
+    { id: 'card_10', titulo: '10. Pacto de Segurança (ICV)', desc: 'Campanha de respeito e cultura de paz', icon: Shield },
+  ];
 
-    .container {
-      width: 100%;
-      max-width: 800px;
-      padding: 0 16px;
-      margin: 0 auto;
-    }
+  const handleCheckboxChange = (id) => {
+    if (id === 'card_1') return; // Torna o Card 1 obrigatório
+    setFormData(prev => ({
+      ...prev,
+      cardsSelecionados: prev.cardsSelecionados.includes(id)
+        ? prev.cardsSelecionados.filter(item => item !== id)
+        : [...prev.cardsSelecionados, id]
+    }));
+  };
 
-    /* TOPO E LOGO */
-    .brand-container {
-      text-align: center;
-      padding-top: 16px;
-      padding-bottom: 8px;
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setEnviado(true);
+  };
 
-    .star-trail-svg {
-      width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto -8px auto;
-      filter: drop-shadow(0 0 10px rgba(245, 184, 0, 0.4));
-    }
-
-    .logo-text {
-      text-transform: uppercase;
-      font-style: italic;
-      line-height: 0.95;
-      text-align: center;
-    }
-
-    .logo-text .line1 {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: #FFFFFF;
-    }
-
-    .logo-text .line2-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    .logo-text .de { font-size: 0.85rem; font-weight: 900; color: #FFFFFF; }
-    .logo-text .coragem {
-      font-size: 1.6rem;
-      font-weight: 900;
-      background: var(--gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-title {
-      text-align: center;
-      font-size: 0.95rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin: 12px 0 6px 0;
-      line-height: 1.3;
-    }
-
-    .hero-subtitle {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--gold-main);
-      font-weight: 700;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-
-    /* FORMULÁRIO COMPACTO E CENTRALIZADO */
-    .form-card {
-      background: var(--card-bg);
-      color: var(--text-dark);
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      margin: 0 auto 20px auto;
-      width: 100%;
-    }
-
-    .form-card h2 {
-      font-size: 0.85rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 12px;
-      color: #0F172A;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    @media (min-width: 600px) {
-      .form-grid { grid-template-columns: 1fr 1fr; }
-      .form-grid .full-width { grid-column: span 2; }
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #CBD5E1;
-      background-color: #F8FAFC;
-      font-size: 0.8rem;
-      color: #334155;
-      outline: none;
-    }
-
-    .terms-text {
-      font-size: 0.6rem;
-      color: #64748B;
-      text-align: center;
-      margin: 8px 0;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--gold-gradient);
-      border: none;
-      border-radius: 6px;
-      padding: 10px;
-      font-size: 0.85rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: #000000;
-      cursor: pointer;
-    }
-
-    .section-header {
-      text-align: center;
-      font-size: 0.9rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin: 16px 0 12px 0;
-    }
-
-    /* PRÊMIOS */
-    .premios-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    @media (min-width: 600px) {
-      .premios-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .premio-card {
-      background: var(--card-bg);
-      color: var(--text-dark);
-      border-radius: 10px;
-      padding: 12px;
-      text-align: center;
-    }
-
-    .premio-icon { font-size: 1.4rem; margin-bottom: 4px; }
-    .premio-title { font-size: 0.78rem; font-weight: 900; margin-bottom: 2px; }
-    .premio-desc { font-size: 0.68rem; color: #64748B; line-height: 1.2; }
-
-    /* 10 MISSÕES SOCIAIS CLICÁVEIS (COM ANIMAÇÃO DE CLIQUE) */
-    .missions-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    @media (min-width: 600px) {
-      .missions-grid { grid-template-columns: repeat(5, 1fr); }
-    }
-
-    .mission-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: 3px solid var(--card-color);
-      border-radius: 8px;
-      padding: 10px 8px;
-      position: relative;
-      cursor: pointer;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .mission-card:active {
-      transform: scale(0.96);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .mission-pts {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      background: rgba(0,0,0,0.7);
-      color: var(--card-color);
-      font-size: 0.5rem;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-weight: 900;
-    }
-
-    .mission-icon { font-size: 1.2rem; margin-bottom: 2px; }
-    .mission-num { font-size: 0.55rem; color: var(--text-muted); }
-    .mission-title { font-size: 0.7rem; font-weight: 800; color: #FFFFFF; }
-
-    /* BOTÃO DE PATROCINADOR FUNCIONAL */
-    .apoiadores-box {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .btn-patrocinador {
-      display: inline-block;
-      background: transparent;
-      border: 2px solid var(--gold-main);
-      color: var(--gold-main);
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      width: 100%;
-      padding: 16px 0;
-      text-align: center;
-      font-size: 0.65rem;
-      color: #64748B;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-    
-    <!-- Topo -->
-    <div class="brand-container">
-      <svg class="star-trail-svg" viewBox="0 0 300 100" fill="none">
-        <path d="M10 80 Q 150 70 240 25" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
-        <path d="M20 85 Q 160 75 245 32" stroke="#E6007E" stroke-width="8" stroke-linecap="round"/>
-        <polygon points="250,5 257,23 276,23 260,34 266,52 250,40 234,52 240,34 224,23 243,23" fill="url(#gold-star-grad)"/>
-        <defs>
-          <linearGradient id="gold-star-grad" x1="224" y1="5" x2="276" y2="52" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#FFE866"/>
-            <stop offset="50%" stop-color="#F5B800"/>
-            <stop offset="100%" stop-color="#996600"/>
-          </linearGradient>
-        </defs>
-      </svg>
-
-      <div class="logo-text">
-        <span class="line1">UM PASSO</span>
-        <div class="line2-wrapper">
-          <span class="de">DE</span>
-          <span class="coragem">CORAGEM</span>
+  if (enviado) {
+    return (
+      <div className="max-w-md mx-auto my-6 p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border border-amber-500/30 text-center">
+        <CheckCircle className="w-16 h-16 text-amber-400 mx-auto mb-4 animate-bounce" />
+        <h2 className="text-2xl font-bold mb-2">Inscrição Confirmada!</h2>
+        <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+          Viva a experiência, conecte-se com sua cidade e inspire outros jovens.
+        </p>
+        <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-amber-200/90 leading-relaxed mb-6">
+          <strong>Aviso de Participação:</strong> Esta sua participação poderá render prêmios e oportunidades conforme a rede de apoiadores de Alagoinhas se expande ao longo do projeto.
         </div>
+        <button 
+          onClick={() => setEnviado(false)}
+          className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold rounded-xl shadow-lg hover:brightness-110 transition"
+        >
+          Voltar ao Início
+        </button>
       </div>
-    </div>
+    );
+  }
 
-    <!-- Título Principal -->
-    <h1 class="hero-title">INSCREVA SUA ESCOLA E SEJA PROTAGONISTA DO MAIOR GAME SHOW DA BAHIA!</h1>
-    <p class="hero-subtitle">27 Territórios de Identidade — Um passeio pelo conhecimento.</p>
+  return (
+    <div className="max-w-md mx-auto my-4 p-5 bg-slate-950 text-white rounded-3xl shadow-xl border border-slate-800 font-sans">
+      {/* Cabeçalho */}
+      <div className="text-center mb-6">
+        <span className="bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/20">
+          Piloto Alagoinhas
+        </span>
+        <h1 className="text-2xl font-extrabold mt-2 bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
+          Um Passo de Coragem
+        </h1>
+        <p className="text-slate-400 text-xs mt-1">
+          Sua voz, sua história e sua ação pelo futuro da nossa cidade.
+        </p>
+      </div>
 
-    <!-- Formulário -->
-    <div class="form-card">
-      <h2>CADASTRO DE ESCOLA E ESTUDANTES</h2>
-      <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
-        <div class="form-grid">
-          <input type="text" class="input-field" placeholder="Nome da Escola" required />
-          <input type="text" class="input-field" placeholder="Cidade / Território" required />
-          <input type="text" class="input-field" placeholder="Nome de Contato" required />
-          <input type="email" class="input-field" placeholder="Email" required />
-          <input type="tel" class="input-field full-width" placeholder="Telefone / WhatsApp" required />
-          <input type="text" class="input-field full-width" placeholder="Mensagem (opcional)" />
+      <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Dados Básicos */}
+        <div className="space-y-3">
+          <div>
+            <label className="block text-xs font-medium text-slate-300 mb-1">Nome Completo *</label>
+            <input 
+              type="text" 
+              required
+              placeholder="Digite seu nome" 
+              className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+              value={formData.nome}
+              onChange={e => setFormData({...formData, nome: e.target.value})}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1">WhatsApp *</label>
+              <input 
+                type="tel" 
+                required
+                placeholder="(75) 9..." 
+                className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+                value={formData.whatsapp}
+                onChange={e => setFormData({...formData, whatsapp: e.target.value})}
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-300 mb-1">Escola / Bairro *</label>
+              <input 
+                type="text" 
+                required
+                placeholder="Ex: CETEP / Catu" 
+                className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+                value={formData.escolaTerritorio}
+                onChange={e => setFormData({...formData, escolaTerritorio: e.target.value})}
+              />
+            </div>
+          </div>
         </div>
-        <p class="terms-text">Ao enviar, você concorda com o processamento de dados para o evento.</p>
-        <button type="submit" class="btn-submit">INSCREVER AGORA</button>
+
+        {/* Bloco do Vídeo de Superação (Card 01) */}
+        <div className="p-4 bg-gradient-to-br from-amber-950/30 to-slate-900 border border-amber-500/30 rounded-2xl">
+          <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold text-sm">
+            <Video className="w-5 h-5" />
+            <span>01. Desafio Central: Vídeo de Superação</span>
+          </div>
+          <p className="text-xs text-slate-300 mb-3 leading-relaxed">
+            Grave um vídeo curto (1 a 2 min) contando sua história, um desafio que superou e como quer impactar a cidade. Cole o link abaixo (Drive, YouTube, Instagram, etc):
+          </p>
+          <input 
+            type="url" 
+            required
+            placeholder="https://..." 
+            className="w-full px-4 py-3 bg-slate-950 border border-amber-500/40 rounded-xl text-sm focus:outline-none focus:border-amber-400 transition"
+            value={formData.videoLink}
+            onChange={e => setFormData({...formData, videoLink: e.target.value})}
+          />
+        </div>
+
+        {/* Seleção dos 10 Cards */}
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 mb-2">
+            Em quais outras atividades você quer se engajar?
+          </label>
+          <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+            {cardsList.map((card) => {
+              const Icon = card.icon;
+              const isChecked = formData.cardsSelecionados.includes(card.id);
+              return (
+                <div 
+                  key={card.id}
+                  onClick={() => handleCheckboxChange(card.id)}
+                  className={`flex items-start gap-3 p-3 rounded-xl border text-left cursor-pointer transition ${
+                    isChecked 
+                      ? 'bg-slate-900 border-amber-500/60 text-white' 
+                      : 'bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700'
+                  }`}
+                >
+                  <input 
+                    type="checkbox" 
+                    checked={isChecked}
+                    readOnly
+                    className="mt-1 rounded border-slate-700 text-amber-500 focus:ring-amber-500"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
+                      <Icon className="w-4 h-4 text-amber-400" />
+                      <span>{card.titulo}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5">{card.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Botão Enviar */}
+        <button 
+          type="submit"
+          className="w-full py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition"
+        >
+          <Send className="w-4 h-4" />
+          <span>ENVIAR MINHA INSCRIÇÃO</span>
+        </button>
       </form>
     </div>
-
-    <!-- Prêmios -->
-    <h2 class="section-header">PRINCIPAIS PRÊMIOS</h2>
-    <div class="premios-grid">
-      <div class="premio-card">
-        <div class="premio-icon">🌐</div>
-        <div class="premio-title">Intercâmbio Internacional</div>
-        <p class="premio-desc">Reserva de intercâmbio para a equipe campeã estadual.</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">✈️</div>
-        <div class="premio-title">Viagens Nacionais</div>
-        <p class="premio-desc">Viagens educacionais pelo Brasil para destaques regionais.</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🎁</div>
-        <div class="premio-title">Prêmios Regionais</div>
-        <p class="premio-desc">Kits de tecnologia em parceria com o comércio baiano.</p>
-      </div>
-    </div>
-
-    <!-- 10 Missões Sociais Clicáveis -->
-    <h2 class="section-header">CENTRAL DAS 10 MISSÕES SOCIAIS</h2>
-    <div class="missions-grid">
-      <div class="mission-card" style="--card-color: #FF3B30;" onclick="clicarMissao('Ação Solidária')">
-        <span class="mission-pts">100 PTS</span>
-        <div class="mission-icon">📦</div>
-        <div class="mission-num">#01</div>
-        <div class="mission-title">Ação Solidária</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #2ECC71;" onclick="clicarMissao('EcoLocal')">
-        <span class="mission-pts">100 PTS</span>
-        <div class="mission-icon">🌳</div>
-        <div class="mission-num">#02</div>
-        <div class="mission-title">EcoLocal</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #1E88E5;" onclick="clicarMissao('Conhecimento')">
-        <span class="mission-pts">150 PTS</span>
-        <div class="mission-icon">🧠</div>
-        <div class="mission-num">#03</div>
-        <div class="mission-title">Conhecimento</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #880E4F;" onclick="clicarMissao('Corrente pelo Bem')">
-        <span class="mission-pts">20 PTS</span>
-        <div class="mission-icon">🩸</div>
-        <div class="mission-num">#04</div>
-        <div class="mission-title">Corrente pelo Bem</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #8E44AD;" onclick="clicarMissao('Cidadania Digital')">
-        <span class="mission-pts">80 PTS</span>
-        <div class="mission-icon">📱</div>
-        <div class="mission-num">#05</div>
-        <div class="mission-title">Cidadania Digital</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #E67E22;" onclick="clicarMissao('Peludos & Protegidos')">
-        <span class="mission-pts">100 PTS</span>
-        <div class="mission-icon">🐾</div>
-        <div class="mission-num">#06</div>
-        <div class="mission-title">Peludos & Protegidos</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #F1C40F;" onclick="clicarMissao('Gerações')">
-        <span class="mission-pts">120 PTS</span>
-        <div class="mission-icon">👵</div>
-        <div class="mission-num">#07</div>
-        <div class="mission-title">Gerações</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #607D8B;" onclick="clicarMissao('RevitaBairro')">
-        <span class="mission-pts">150 PTS</span>
-        <div class="mission-icon">🛠️</div>
-        <div class="mission-num">#08</div>
-        <div class="mission-title">RevitaBairro</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #FF4081;" onclick="clicarMissao('Cultura p/ Todos')">
-        <span class="mission-pts">100 PTS</span>
-        <div class="mission-icon">🎨</div>
-        <div class="mission-num">#09</div>
-        <div class="mission-title">Cultura p/ Todos</div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #00BCD4;" onclick="clicarMissao('Minha Cidade')">
-        <span class="mission-pts">130 PTS</span>
-        <div class="mission-icon">💡</div>
-        <div class="mission-num">#10</div>
-        <div class="mission-title">Minha Cidade</div>
-      </div>
-    </div>
-
-    <!-- Patrocinadores -->
-    <div class="apoiadores-box">
-      <h2 class="section-header">PATROCINADORES LOCAIS E GLOBAIS</h2>
-      <a href="mailto:contato@umpassodecoragem.com.br?subject=Interesse%20em%20Patrocínio" class="btn-patrocinador">
-        RESERVE SUA JANELA NO PAINEL
-      </a>
-    </div>
-
-  </div>
-
-  <footer>
-    <p>© 2026 UM PASSO DE CORAGEM. TODOS OS DIREITOS RESERVADOS.</p>
-  </footer>
-
-  <script>
-    function clicarMissao(nome) {
-      alert('Você clicou na missão: ' + nome + '\nEm breve mais detalhes sobre esta ação!');
-    }
-  </script>
-</body>
-</html>
+  );
+}

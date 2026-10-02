@@ -3,536 +3,402 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Um Passo de Coragem - Game Show Social 2026</title>
+  <title>Um Passo de Coragem - Game Show Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,900;1,800;1,900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-dark: #0b0e1a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --gold-accent: #F5B800;
-      --magenta-glow: #e11d48;
-      --blue-glow: #0284c7;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --font-family: system-ui, -apple-system, sans-serif;
+      --bg-dark: #070913;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --gold-main: #F2C200;
+      --gold-gradient: linear-gradient(180deg, #FFE866 0%, #F5B800 50%, #C88A00 100%);
+      --magenta-trail: #E6007E;
+      --blue-trail: #0088FF;
+      --text-white: #FFFFFF;
+      --text-dark: #0F172A;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {
       background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: var(--font-family);
-      line-height: 1.5;
-      overflow-x: hidden;
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(225, 29, 72, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.15) 0%, transparent 40%);
+        radial-gradient(circle at 50% 0%, rgba(0, 136, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(230, 0, 126, 0.1) 0%, transparent 50%);
     }
 
-    /* Container Centralizado Padrão */
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
       width: 100%;
+      max-width: 900px;
+      padding: 0 20px;
     }
 
-    /* Header */
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11, 14, 26, 0.8);
-    }
-
-    .header-content {
+    /* --- LOGO OFICIAL ESTILIZADA EM VECTOR/CSS --- */
+    .brand-container {
+      text-align: center;
+      padding: 40px 0 20px 0;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
     }
 
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .logo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* Estrela e Rastros */
+    .star-trail-svg {
+      width: 280px;
+      height: auto;
+      display: block;
+      margin: 0 auto -20px auto;
+      filter: drop-shadow(0 0 12px rgba(245, 184, 0, 0.4));
+    }
+
+    .logo-text {
+      text-transform: uppercase;
+      font-style: italic;
+      line-height: 0.9;
+      text-align: center;
+    }
+
+    .logo-text .line1 {
+      font-size: 2.8rem;
       font-weight: 900;
-      font-size: 1.2rem;
-      letter-spacing: -0.5px;
+      color: #FFFFFF;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.2);
+      letter-spacing: -1px;
+      display: block;
     }
 
-    .logo-star {
-      color: var(--gold-accent);
-      font-size: 1.5rem;
-    }
-
-    nav ul {
+    .logo-text .line2-wrapper {
       display: flex;
-      gap: 24px;
-      list-style: none;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 2px;
     }
 
-    nav a {
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
+    .logo-text .de {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #FFFFFF;
     }
 
-    nav a:hover {
-      color: var(--gold-accent);
+    .logo-text .coragem {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.9));
+      letter-spacing: -1px;
     }
 
-    /* Hero Section */
-    .hero {
-      padding: 60px 0;
+    /* --- TITULOS & SUBTITULOS --- */
+    .hero-title {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 20px 0 12px 0;
+      line-height: 1.3;
     }
 
-    .hero-grid {
+    .hero-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      font-weight: 500;
+      max-width: 720px;
+      margin: 0 auto 30px auto;
+      line-height: 1.5;
+    }
+
+    /* --- CARD DE FORMULÁRIO (ESTILO MATCHING MOCKUP 4B) --- */
+    .form-card {
+      background: #FFFFFF;
+      color: var(--text-dark);
+      border-radius: 16px;
+      padding: 30px 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      margin-bottom: 40px;
+    }
+
+    .form-card h2 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0F172A;
+      letter-spacing: 0.5px;
+    }
+
+    .form-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
+      gap: 12px;
     }
 
-    @media (min-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1.1fr 0.9fr;
+    @media (min-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .form-grid .full-width {
+        grid-column: span 2;
       }
     }
 
-    .badge-territorio {
-      display: inline-block;
-      background: linear-gradient(90deg, #e11d48, #0284c7);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .hero-title {
-      font-size: 2.2rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-
-    .hero-title span {
-      color: var(--gold-accent);
-    }
-
-    .hero-sub {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 24px;
-    }
-
-    /* Formulário Glassmorphism */
-    .form-card {
-      background: rgba(255, 255, 255, 0.95);
-      color: #0f172a;
-      padding: 32px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    }
-
-    .form-card h3 {
-      font-size: 1.2rem;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #0f172a;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #475569;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-    }
-
-    .form-group input, .form-group select {
+    .input-field {
       width: 100%;
-      padding: 12px;
+      padding: 12px 16px;
       border-radius: 8px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      font-size: 0.9rem;
-      color: #0f172a;
+      border: 1px solid #E2E8F0;
+      background-color: #F8FAFC;
+      font-size: 0.85rem;
+      color: #334155;
+      outline: none;
     }
 
-    .btn-gold {
+    .input-field::placeholder {
+      color: #94A3B8;
+    }
+
+    .terms-text {
+      font-size: 0.65rem;
+      color: #64748B;
+      text-align: center;
+      margin: 12px 0;
+    }
+
+    .btn-submit {
       width: 100%;
-      background: var(--gold-accent);
-      color: #000;
-      padding: 14px;
+      background: var(--gold-gradient);
       border: none;
       border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 800;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 900;
       text-transform: uppercase;
+      color: #000000;
       cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(245, 184, 0, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .btn-gold:hover {
-      background: #e0a800;
+    .btn-submit:hover {
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 184, 0, 0.5);
     }
 
-    /* Seção Prêmios */
-    .section-title {
+    /* --- SEÇÃO DE PRÊMIOS --- */
+    .section-header {
       text-align: center;
-      margin: 60px 0 40px 0;
-    }
-
-    .section-title h2 {
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: 1.1rem;
+      font-weight: 900;
       text-transform: uppercase;
+      margin: 40px 0 20px 0;
+      letter-spacing: 0.5px;
     }
 
     .premios-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 16px;
+      margin-bottom: 40px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 700px) {
       .premios-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
     .premio-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: 4px solid var(--gold-accent);
+      background: #FFFFFF;
+      color: var(--text-dark);
       border-radius: 16px;
-      padding: 30px 20px;
+      padding: 24px 16px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     .premio-icon {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
 
     .premio-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+      color: #0F172A;
     }
 
     .premio-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      font-size: 0.72rem;
+      color: #64748B;
+      line-height: 1.3;
     }
 
-    /* Missões Grid */
-    .missions-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    @media (min-width: 900px) {
-      .missions-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
-    }
-
-    .mission-card {
-      background: var(--card-bg);
-      border-top: 4px solid var(--card-color);
-      border-radius: 12px;
-      padding: 16px;
-      min-height: 140px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .mission-pts {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0,0,0,0.5);
-      color: var(--card-color);
-      font-size: 0.65rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 800;
-    }
-
-    /* Apoiadores e Patrocinadores */
-    .patrocinio-box {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 40px 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 30px 0;
+    /* --- PAINEL APOIADORES --- */
+    .apoiadores-box {
       text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 80px;
+      margin-bottom: 50px;
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      border: 2px solid var(--gold-main);
+      color: var(--gold-main);
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #64748B;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .social-icons a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 1.1rem;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-content">
-      <div class="logo-container">
-        <span class="logo-star">★</span>
-        <span>UM PASSO DE CORAGEM</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#inscricao">Inscrição</a></li>
-          <li><a href="#premios">Prêmios</a></li>
-          <li><a href="#missoes">Missões</a></li>
-          <li><a href="#apoiadores">Apoiadores</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div class="container">
+    
+    <!-- Header com Logo Oficial -->
+    <div class="brand-container">
+      <div class="logo-wrapper">
+        <!-- Vetor SVG da Estrela com Rastros Azul e Magenta -->
+        <svg class="star-trail-svg" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 80 Q 150 70 240 25" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
+          <path d="M20 85 Q 160 75 245 32" stroke="#E6007E" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="250,5 257,23 276,23 260,34 266,52 250,40 234,52 240,34 224,23 243,23" fill="url(#gold-star-grad)" stroke="#FFF" stroke-width="1"/>
+          <defs>
+            <linearGradient id="gold-star-grad" x1="224" y1="5" x2="276" y2="52" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FFE866"/>
+              <stop offset="50%" stop-color="#F5B800"/>
+              <stop offset="100%" stop-color="#996600"/>
+            </linearGradient>
+          </defs>
+        </svg>
 
-  <!-- Hero Section / Inscrição -->
-  <section id="inscricao" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="badge-territorio">27 Territórios de Identidade • 30 Edições + 31ª Grande Final</span>
-        <h1 class="hero-title">Inscreva sua escola e seja protagonista do <span>maior Game Show da Bahia!</span></h1>
-        <p class="hero-sub">Um circuito cultural e educacional inesquecível. Cumpra missões sociais, mobilize sua comunidade e garanta sua vaga na grande final com visibilidade em todo o estado.</p>
-      </div>
-
-      <div class="form-card">
-        <h3>Cadastro de Escola / Estudantes</h3>
-        <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
-          <div class="form-group">
-            <label>Nome da Escola / Instituição</label>
-            <input type="text" placeholder="Ex: Colégio Estadual..." required />
+        <div class="logo-text">
+          <span class="line1">UM PASSO</span>
+          <div class="line2-wrapper">
+            <span class="de">DE</span>
+            <span class="coragem">CORAGEM</span>
           </div>
-          <div class="form-group">
-            <label>Nome da Equipe</label>
-            <input type="text" placeholder="Ex: Guerreiros da Coragem" required />
-          </div>
-          <div class="form-group">
-            <label>Território de Identidade / Cidade</label>
-            <input type="text" placeholder="Sua Cidade na Bahia" required />
-          </div>
-          <div class="form-group">
-            <label>Professor Orientador (Mentor)</label>
-            <input type="text" placeholder="Nome completo do Professor" required />
-          </div>
-          <div class="form-group">
-            <label>WhatsApp do Líder / Responsável</label>
-            <input type="tel" placeholder="(71) 90000-0000" required />
-          </div>
-          <button type="submit" class="btn-gold">Inscrever Agora</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Prêmios -->
-  <section id="premios" class="container">
-    <div class="section-title">
-      <h2>Principais Prêmios</h2>
-    </div>
-    <div class="premios-grid">
-      <div class="premio-card">
-        <div class="premio-icon">✈️</div>
-        <div class="premio-title">Intercâmbio Internacional</div>
-        <p class="premio-desc">Experiência internacional inesquecível para os vencedores da 31ª Grande Final do Game Show.</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🗺️</div>
-        <div class="premio-title">Viagens Nacionais</div>
-        <p class="premio-desc">Roteiros culturais e educacionais pelo Brasil para as melhores equipes classificadas nos territórios.</p>
-      </div>
-      <div class="premio-card">
-        <div class="premio-icon">🏆</div>
-        <div class="premio-title">Prêmios Regionais</div>
-        <p class="premio-desc">Kits tecnológicos, troféus e bolsas em parceria com empresas e instituições locais do Nordeste.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Central de Missões -->
-  <section id="missoes" class="container">
-    <div class="section-title">
-      <h2>Central das 10 Missões Sociais</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">Cumpra as missões para pontuar e classificar sua equipe.</p>
-    </div>
-
-    <div class="missions-grid">
-      <div class="mission-card" style="--card-color: #FF3B30;">
-        <span class="mission-pts">100 PTS</span>
-        <div style="font-size: 1.5rem;">📦</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#01</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Ação Solidária</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Arrecadação de Alimentos</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #2ECC71;">
-        <span class="mission-pts">100 PTS</span>
-        <div style="font-size: 1.5rem;">🌳</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#02</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">EcoLocal</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Mutirão e Reciclagem</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #1E88E5;">
-        <span class="mission-pts">150 PTS</span>
-        <div style="font-size: 1.5rem;">🧠</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#03</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Conhecimento</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Oficinas e Palestras</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #880E4F;">
-        <span class="mission-pts">20 PTS/Doador</span>
-        <div style="font-size: 1.5rem;">🩸</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#04</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Corrente pelo Bem</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Doação de Sangue</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #8E44AD;">
-        <span class="mission-pts">80 PTS</span>
-        <div style="font-size: 1.5rem;">📱</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#05</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Cidadania Digital</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Campanha em Vídeo</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #E67E22;">
-        <span class="mission-pts">100 PTS</span>
-        <div style="font-size: 1.5rem;">🐾</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#06</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Peludos e Protegidos</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Causa Animal</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #F1C40F;">
-        <span class="mission-pts">120 PTS</span>
-        <div style="font-size: 1.5rem;">👵</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#07</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Gerações</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Apoio aos Idosos</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #607D8B;">
-        <span class="mission-pts">150 PTS</span>
-        <div style="font-size: 1.5rem;">🛠️</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#08</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">RevitaBairro</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Melhoria Urbana</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #FF4081;">
-        <span class="mission-pts">100 PTS</span>
-        <div style="font-size: 1.5rem;">🎨</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#09</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Cultura p/ Todos</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Arte na Comunidade</div>
-        </div>
-      </div>
-
-      <div class="mission-card" style="--card-color: #00BCD4;">
-        <span class="mission-pts">130 PTS</span>
-        <div style="font-size: 1.5rem;">💡</div>
-        <div>
-          <div style="font-size: 0.65rem; color: #64748b;">#10</div>
-          <div style="font-weight: 700; font-size: 0.85rem;">Minha Cidade</div>
-          <div style="font-size: 0.7rem; color: var(--text-muted);">Inovação Urbana</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Apoiadores e Patrocinadores -->
-  <section id="apoiadores" class="container">
-    <div class="section-title">
-      <h2>Seja um Apoiador / Patrocinador</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem;">Conecte sua marca ao maior movimento de impacto social jovem da Bahia.</p>
-    </div>
+    <!-- Título Principal -->
+    <h1 class="hero-title">INSCREVA SUA ESCOLA E SEJA PROTAGONISTA<br>DO MAIOR GAME SHOW DA BAHIA!</h1>
+    
+    <p class="hero-subtitle">
+      <strong>UM PASSO DE CORAGEM</strong> é um circuito de 30 edições regionais + 31ª Grande Final que vai percorrer todos os <strong>27 Territórios de Identidade da Bahia</strong>, unindo estudantes, escolas, comunidades e empresas em uma jornada educacional, social e cultural.
+    </p>
 
-    <div class="patrocinio-box">
-      <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase;">Reserve sua Janela no Painel</h3>
-      <form onsubmit="alert('Solicitação recebida!'); return false;">
-        <div class="form-group">
-          <label style="color: var(--text-muted);">Nome da Empresa / Razão Social</label>
-          <input type="text" placeholder="Sua Empresa" style="background: #0f172a; border-color: #334155; color: #fff;" required />
+    <!-- Formulário de Inscrição -->
+    <div class="form-card">
+      <h2>CADASTRO DE ESCOLA E ESTUDANTES</h2>
+      <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
+        <div class="form-grid">
+          <input type="text" class="input-field" placeholder="Nome da Escola" required />
+          <input type="text" class="input-field" placeholder="Cidade / Território" required />
+          <input type="text" class="input-field" placeholder="Nome de Contato" required />
+          <input type="email" class="input-field" placeholder="Email" required />
+          <input type="tel" class="input-field full-width" placeholder="Telefone / WhatsApp" required />
+          <input type="text" class="input-field full-width" placeholder="Mensagem (opcional)" />
         </div>
-        <div class="form-group">
-          <label style="color: var(--text-muted);">Escolha a Cota de Exibição</label>
-          <select style="background: #0f172a; border-color: #334155; color: #fff;" required>
-            <option value="">Selecione uma Cota</option>
-            <option value="local">Cota Regional / Local</option>
-            <option value="global">Cota Master / Estadual</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label style="color: var(--text-muted);">E-mail ou WhatsApp para Contato</label>
-          <input type="text" placeholder="Seu contato" style="background: #0f172a; border-color: #334155; color: #fff;" required />
-        </div>
-        <button type="submit" class="btn-gold">Reservar Espaço</button>
+        
+        <p class="terms-text">Ao enviar, você concorda com o processamento de dados para fins do evento.</p>
+        
+        <button type="submit" class="btn-submit">INSCREVER AGORA</button>
       </form>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      Um Passo de Coragem © 2026 • Todos os direitos reservados.
+    <!-- Prêmios -->
+    <h2 class="section-header">PRINCIPAIS PRÊMIOS:</h2>
+    <div class="premios-grid">
+      <div class="premio-card">
+        <div class="premio-icon">🌐</div>
+        <div class="premio-title">Intercâmbio Internacional para Vencedores (Final)</div>
+        <p class="premio-desc">Reserva de intercâmbio internacional para a equipe campeã estadual.</p>
+      </div>
+
+      <div class="premio-card">
+        <div class="premio-icon">✈️</div>
+        <div class="premio-title">Viagens Nacionais</div>
+        <p class="premio-desc">Viagens educacionais e culturais pelo Brasil para destaques regionais.</p>
+      </div>
+
+      <div class="premio-card">
+        <div class="premio-icon">🎁</div>
+        <div class="premio-title">Prêmios Regionais / Parcerias Locais</div>
+        <p class="premio-desc">Kits de tecnologia e premiações em parceria com o comércio baiano.</p>
+      </div>
     </div>
+
+    <!-- Apoiadores -->
+    <div class="apoiadores-box">
+      <h2 class="section-header">PATROCINADORES LOCAIS E GLOBAIS</h2>
+      <button class="btn-outline-gold">RESERVE SUA JANELA NO PAINEL</button>
+    </div>
+
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="social-icons">
+      <a href="#">🌐</a>
+      <a href="#">📷</a>
+      <a href="#">🎥</a>
+    </div>
+    <p>© 2026 UM PASSO DE CORAGEM. TODOS OS DIREITOS RESERVADOS.</p>
   </footer>
 
 </body>

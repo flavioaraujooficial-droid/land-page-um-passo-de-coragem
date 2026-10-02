@@ -1,190 +1,223 @@
-import React, { useState } from 'react';
-import { 
-  Video, CheckCircle, Heart, Leaf, Users, Paintbrush, 
-  Music, Activity, BookOpen, Award, Shield, Send 
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Um Passo de Coragem - Piloto Alagoinhas</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- React e ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  
+  <!-- Babel para interpretar JSX no navegador -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-3">
 
-export default function FormularioPiloto() {
-  const [enviado, setEnviado] = useState(false);
-  const [formData, setFormData] = useState({
-    nome: '',
-    whatsapp: '',
-    escolaTerritorio: '',
-    videoLink: '',
-    cardsSelecionados: ['card_1'] // Card 1 (Superação) já selecionado por padrão
-  });
+  <div id="root" class="w-full"></div>
 
-  const cardsList = [
-    { id: 'card_1', titulo: '01. Minha História de Superação', desc: 'Vídeo gravado sobre sua trajetória e visão de futuro', icon: Video, obrigatorio: true },
-    { id: 'card_2', titulo: '02. Ação Solidária & Arrecadação', desc: 'Arrecadação de alimentos ou agasalhos no bairro', icon: Heart },
-    { id: 'card_3', titulo: '03. EcoLocal & Sustentabilidade', desc: 'Mutirão de reciclagem ou plantio de mudas', icon: Leaf },
-    { id: 'card_4', titulo: '04. Conexão de Gerações', desc: 'Suporte digital e escuta ativa com a terceira idade', icon: Users },
-    { id: 'card_5', titulo: '05. Revitaliza Bairro', desc: 'Pintura, horta comunitária ou reparo coletivo', icon: Paintbrush },
-    { id: 'card_6', titulo: '06. Cultura e Arte de Rua', desc: 'Apresentação ou registro de arte local', icon: Music },
-    { id: 'card_7', titulo: '07. Esporte & Saúde Comunitária', desc: 'Caminhada ou torneio esportivo de integração', icon: Activity },
-    { id: 'card_8', titulo: '08. Conhecimento & Mentoria', desc: 'Grupo de estudo ou reforço escolar', icon: BookOpen },
-    { id: 'card_9', titulo: '09. Liderança e Cidadania', desc: 'Mapear um desafio local e propor solução', icon: Award },
-    { id: 'card_10', titulo: '10. Pacto de Segurança (ICV)', desc: 'Campanha de respeito e cultura de paz', icon: Shield },
-  ];
+  <script type="text/babel">
+    const { useState, useEffect } = React;
 
-  const handleCheckboxChange = (id) => {
-    if (id === 'card_1') return; // Torna o Card 1 obrigatório
-    setFormData(prev => ({
-      ...prev,
-      cardsSelecionados: prev.cardsSelecionados.includes(id)
-        ? prev.cardsSelecionados.filter(item => item !== id)
-        : [...prev.cardsSelecionados, id]
-    }));
-  };
+    function FormularioPiloto() {
+      const [enviado, setEnviado] = useState(false);
+      const [formData, setFormData] = useState({
+        nome: '',
+        whatsapp: '',
+        escolaTerritorio: '',
+        videoLink: '',
+        cardsSelecionados: ['card_1']
+      });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setEnviado(true);
-  };
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, [enviado]);
 
-  if (enviado) {
-    return (
-      <div className="max-w-md mx-auto my-6 p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border border-amber-500/30 text-center">
-        <CheckCircle className="w-16 h-16 text-amber-400 mx-auto mb-4 animate-bounce" />
-        <h2 className="text-2xl font-bold mb-2">Inscrição Confirmada!</h2>
-        <p className="text-slate-300 text-sm mb-6 leading-relaxed">
-          Viva a experiência, conecte-se com sua cidade e inspire outros jovens.
-        </p>
-        <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-amber-200/90 leading-relaxed mb-6">
-          <strong>Aviso de Participação:</strong> Esta sua participação poderá render prêmios e oportunidades conforme a rede de apoiadores de Alagoinhas se expande ao longo do projeto.
-        </div>
-        <button 
-          onClick={() => setEnviado(false)}
-          className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold rounded-xl shadow-lg hover:brightness-110 transition"
-        >
-          Voltar ao Início
-        </button>
-      </div>
-    );
-  }
+      const cardsList = [
+        { id: 'card_1', titulo: '01. Minha História de Superação', desc: 'Vídeo gravado sobre sua trajetória e visão de futuro', icon: 'video' },
+        { id: 'card_2', titulo: '02. Ação Solidária & Arrecadação', desc: 'Arrecadação de alimentos ou agasalhos no bairro', icon: 'heart' },
+        { id: 'card_3', titulo: '03. EcoLocal & Sustentabilidade', desc: 'Mutirão de reciclagem ou plantio de mudas', icon: 'leaf' },
+        { id: 'card_4', titulo: '04. Conexão de Gerações', desc: 'Suporte digital e escuta ativa com a terceira idade', icon: 'users' },
+        { id: 'card_5', titulo: '05. Revitaliza Bairro', desc: 'Pintura, horta comunitária ou reparo coletivo', icon: 'paintbrush' },
+        { id: 'card_6', titulo: '06. Cultura e Arte de Rua', desc: 'Apresentação ou registro de arte local', icon: 'music' },
+        { id: 'card_7', titulo: '07. Esporte & Saúde Comunitária', desc: 'Caminhada ou torneio esportivo de integração', icon: 'activity' },
+        { id: 'card_8', titulo: '08. Conhecimento & Mentoria', desc: 'Grupo de estudo ou reforço escolar', icon: 'book-open' },
+        { id: 'card_9', titulo: '09. Liderança e Cidadania', desc: 'Mapear um desafio local e propor solução', icon: 'award' },
+        { id: 'card_10', titulo: '10. Pacto de Segurança (ICV)', desc: 'Campanha de respeito e cultura de paz', icon: 'shield' },
+      ];
 
-  return (
-    <div className="max-w-md mx-auto my-4 p-5 bg-slate-950 text-white rounded-3xl shadow-xl border border-slate-800 font-sans">
-      {/* Cabeçalho */}
-      <div className="text-center mb-6">
-        <span className="bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/20">
-          Piloto Alagoinhas
-        </span>
-        <h1 className="text-2xl font-extrabold mt-2 bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
-          Um Passo de Coragem
-        </h1>
-        <p className="text-slate-400 text-xs mt-1">
-          Sua voz, sua história e sua ação pelo futuro da nossa cidade.
-        </p>
-      </div>
+      const handleCheckboxChange = (id) => {
+        if (id === 'card_1') return;
+        setFormData(prev => ({
+          ...prev,
+          cardsSelecionados: prev.cardsSelecionados.includes(id)
+            ? prev.cardsSelecionados.filter(item => item !== id)
+            : [...prev.cardsSelecionados, id]
+        }));
+      };
 
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Dados Básicos */}
-        <div className="space-y-3">
-          <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Nome Completo *</label>
-            <input 
-              type="text" 
-              required
-              placeholder="Digite seu nome" 
-              className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
-              value={formData.nome}
-              onChange={e => setFormData({...formData, nome: e.target.value})}
-            />
-          </div>
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setEnviado(true);
+      };
 
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">WhatsApp *</label>
-              <input 
-                type="tel" 
-                required
-                placeholder="(75) 9..." 
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
-                value={formData.whatsapp}
-                onChange={e => setFormData({...formData, whatsapp: e.target.value})}
-              />
+      if (enviado) {
+        return (
+          <div className="max-w-md mx-auto p-6 bg-slate-900 text-white rounded-3xl shadow-2xl border border-amber-500/30 text-center">
+            <div className="w-16 h-16 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-500/30">
+              <i data-lucide="check-circle-2" className="w-10 h-10"></i>
             </div>
-            <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1">Escola / Bairro *</label>
-              <input 
-                type="text" 
-                required
-                placeholder="Ex: CETEP / Catu" 
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
-                value={formData.escolaTerritorio}
-                onChange={e => setFormData({...formData, escolaTerritorio: e.target.value})}
-              />
+            <h2 className="text-2xl font-bold mb-2">Inscrição Confirmada!</h2>
+            <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+              Viva a experiência, conecte-se com sua cidade e inspire outros jovens.
+            </p>
+            <div className="bg-slate-800/80 p-4 rounded-2xl border border-slate-700 text-xs text-amber-200/90 leading-relaxed mb-6">
+              <strong>Aviso de Participação:</strong> Esta sua participação poderá render prêmios e oportunidades conforme a rede de apoiadores de Alagoinhas se expande ao longo do projeto.
             </div>
+            <button 
+              onClick={() => setEnviado(false)}
+              className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold rounded-xl shadow-lg hover:brightness-110 transition"
+            >
+              Voltar ao Início
+            </button>
           </div>
-        </div>
+        );
+      }
 
-        {/* Bloco do Vídeo de Superação (Card 01) */}
-        <div className="p-4 bg-gradient-to-br from-amber-950/30 to-slate-900 border border-amber-500/30 rounded-2xl">
-          <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold text-sm">
-            <Video className="w-5 h-5" />
-            <span>01. Desafio Central: Vídeo de Superação</span>
+      return (
+        <div className="max-w-md mx-auto my-2 p-5 bg-slate-950 text-white rounded-3xl shadow-xl border border-slate-800 font-sans">
+          {/* Cabeçalho */}
+          <div className="text-center mb-6">
+            <span className="bg-amber-500/10 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full border border-amber-500/20">
+              Piloto Alagoinhas
+            </span>
+            <h1 className="text-2xl font-extrabold mt-2 bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
+              Um Passo de Coragem
+            </h1>
+            <p className="text-slate-400 text-xs mt-1">
+              Sua voz, sua história e sua ação pelo futuro da nossa cidade.
+            </p>
           </div>
-          <p className="text-xs text-slate-300 mb-3 leading-relaxed">
-            Grave um vídeo curto (1 a 2 min) contando sua história, um desafio que superou e como quer impactar a cidade. Cole o link abaixo (Drive, YouTube, Instagram, etc):
-          </p>
-          <input 
-            type="url" 
-            required
-            placeholder="https://..." 
-            className="w-full px-4 py-3 bg-slate-950 border border-amber-500/40 rounded-xl text-sm focus:outline-none focus:border-amber-400 transition"
-            value={formData.videoLink}
-            onChange={e => setFormData({...formData, videoLink: e.target.value})}
-          />
-        </div>
 
-        {/* Seleção dos 10 Cards */}
-        <div>
-          <label className="block text-xs font-semibold text-slate-300 mb-2">
-            Em quais outras atividades você quer se engajar?
-          </label>
-          <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
-            {cardsList.map((card) => {
-              const Icon = card.icon;
-              const isChecked = formData.cardsSelecionados.includes(card.id);
-              return (
-                <div 
-                  key={card.id}
-                  onClick={() => handleCheckboxChange(card.id)}
-                  className={`flex items-start gap-3 p-3 rounded-xl border text-left cursor-pointer transition ${
-                    isChecked 
-                      ? 'bg-slate-900 border-amber-500/60 text-white' 
-                      : 'bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700'
-                  }`}
-                >
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Dados Básicos */}
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-medium text-slate-300 mb-1">Nome Completo *</label>
+                <input 
+                  type="text" 
+                  required
+                  placeholder="Digite seu nome" 
+                  className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+                  value={formData.nome}
+                  onChange={e => setFormData({...formData, nome: e.target.value})}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">WhatsApp *</label>
                   <input 
-                    type="checkbox" 
-                    checked={isChecked}
-                    readOnly
-                    className="mt-1 rounded border-slate-700 text-amber-500 focus:ring-amber-500"
+                    type="tel" 
+                    required
+                    placeholder="(75) 9..." 
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+                    value={formData.whatsapp}
+                    onChange={e => setFormData({...formData, whatsapp: e.target.value})}
                   />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
-                      <Icon className="w-4 h-4 text-amber-400" />
-                      <span>{card.titulo}</span>
-                    </div>
-                    <p className="text-[11px] text-slate-400 mt-0.5">{card.desc}</p>
-                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-300 mb-1">Escola / Bairro *</label>
+                  <input 
+                    type="text" 
+                    required
+                    placeholder="Ex: CETEP / Catu" 
+                    className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-sm focus:outline-none focus:border-amber-500 transition"
+                    value={formData.escolaTerritorio}
+                    onChange={e => setFormData({...formData, escolaTerritorio: e.target.value})}
+                  />
+                </div>
+              </div>
+            </div>
 
-        {/* Botão Enviar */}
-        <button 
-          type="submit"
-          className="w-full py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition"
-        >
-          <Send className="w-4 h-4" />
-          <span>ENVIAR MINHA INSCRIÇÃO</span>
-        </button>
-      </form>
-    </div>
-  );
-}
+            {/* Bloco do Vídeo de Superação (Card 01) */}
+            <div className="p-4 bg-gradient-to-br from-amber-950/30 to-slate-900 border border-amber-500/30 rounded-2xl">
+              <div className="flex items-center gap-2 mb-2 text-amber-400 font-bold text-sm">
+                <i data-lucide="video" className="w-5 h-5"></i>
+                <span>01. Desafio Central: Vídeo de Superação</span>
+              </div>
+              <p className="text-xs text-slate-300 mb-3 leading-relaxed">
+                Grave um vídeo curto (1 a 2 min) contando sua história, um desafio que superou e como quer impactar a cidade. Cole o link abaixo:
+              </p>
+              <input 
+                type="url" 
+                required
+                placeholder="https://..." 
+                className="w-full px-4 py-3 bg-slate-950 border border-amber-500/40 rounded-xl text-sm focus:outline-none focus:border-amber-400 transition"
+                value={formData.videoLink}
+                onChange={e => setFormData({...formData, videoLink: e.target.value})}
+              />
+            </div>
+
+            {/* Seleção dos 10 Cards */}
+            <div>
+              <label className="block text-xs font-semibold text-slate-300 mb-2">
+                Em quais outras atividades você quer se engajar?
+              </label>
+              <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+                {cardsList.map((card) => {
+                  const isChecked = formData.cardsSelecionados.includes(card.id);
+                  return (
+                    <div 
+                      key={card.id}
+                      onClick={() => handleCheckboxChange(card.id)}
+                      className={`flex items-start gap-3 p-3 rounded-xl border text-left cursor-pointer transition ${
+                        isChecked 
+                          ? 'bg-slate-900 border-amber-500/60 text-white' 
+                          : 'bg-slate-900/40 border-slate-800 text-slate-400 hover:border-slate-700'
+                      }`}
+                    >
+                      <input 
+                        type="checkbox" 
+                        checked={isChecked}
+                        readOnly
+                        className="mt-1 rounded border-slate-700 text-amber-500 focus:ring-amber-500"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
+                          <i data-lucide={card.icon} className="w-4 h-4 text-amber-400"></i>
+                          <span>{card.titulo}</span>
+                        </div>
+                        <p className="text-[11px] text-slate-400 mt-0.5">{card.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Botão Enviar */}
+            <button 
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 hover:brightness-110 active:scale-95 transition"
+            >
+              <i data-lucide="send" className="w-4 h-4"></i>
+              <span>ENVIAR MINHA INSCRIÇÃO</span>
+            </button>
+          </form>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<FormularioPiloto />);
+  </script>
+</body>
+</html>

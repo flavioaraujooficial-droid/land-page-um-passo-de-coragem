@@ -14,8 +14,6 @@
       --card-bg: #FFFFFF;
       --gold-main: #F2C200;
       --gold-gradient: linear-gradient(180deg, #FFE866 0%, #F5B800 50%, #C88A00 100%);
-      --magenta-trail: #E6007E;
-      --blue-trail: #0088FF;
       --text-white: #FFFFFF;
       --text-dark: #0F172A;
       --text-muted: #94A3B8;
@@ -43,31 +41,23 @@
 
     .container {
       width: 100%;
-      max-width: 900px;
+      max-width: 800px;
       padding: 0 16px;
       margin: 0 auto;
     }
 
-    /* --- LOGO & TOP HERO --- */
+    /* --- LOGO & HERO --- */
     .brand-container {
       text-align: center;
-      padding-top: 24px;
-      padding-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .logo-wrapper {
-      position: relative;
-      display: inline-block;
+      padding-top: 16px;
+      padding-bottom: 8px;
     }
 
     .star-trail-svg {
-      width: 240px;
+      width: 200px;
       height: auto;
       display: block;
-      margin: 0 auto -16px auto;
+      margin: 0 auto -10px auto;
       filter: drop-shadow(0 0 10px rgba(245, 184, 0, 0.4));
     }
 
@@ -79,12 +69,10 @@
     }
 
     .logo-text .line1 {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: #FFFFFF;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.8);
       letter-spacing: -1px;
-      display: block;
     }
 
     .logo-text .line2-wrapper {
@@ -92,259 +80,207 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      margin-top: 2px;
     }
 
-    .logo-text .de {
-      font-size: 1rem;
-      font-weight: 900;
-      color: #FFFFFF;
-    }
-
+    .logo-text .de { font-size: 0.9rem; font-weight: 900; color: #FFFFFF; }
     .logo-text .coragem {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 900;
       background: var(--gold-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 3px 5px rgba(0,0,0,0.9));
       letter-spacing: -1px;
     }
 
-    /* TITULOS & SUBTITULOS REAJUSTADOS */
     .hero-title {
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin: 16px 0 8px 0;
-      line-height: 1.35;
+      margin: 12px 0 6px 0;
+      line-height: 1.3;
     }
 
     .hero-subtitle {
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--gold-main);
       font-weight: 700;
-      margin: 0 auto 20px auto;
+      margin-bottom: 16px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
-    /* --- CARD FORMULÁRIO --- */
+    /* --- FORMULÁRIO COMPACTO --- */
     .form-card {
       background: var(--card-bg);
       color: var(--text-dark);
-      border-radius: 16px;
-      padding: 20px 16px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-      margin-bottom: 30px;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
     }
 
     .form-card h2 {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 900;
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
       color: #0F172A;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 8px;
     }
 
     @media (min-width: 600px) {
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .form-grid .full-width {
-        grid-column: span 2;
-      }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .form-grid .full-width { grid-column: span 2; }
     }
 
     .input-field {
       width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #E2E8F0;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #CBD5E1;
       background-color: #F8FAFC;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #334155;
       outline: none;
     }
 
     .terms-text {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       color: #64748B;
       text-align: center;
-      margin: 10px 0;
+      margin: 8px 0;
     }
 
     .btn-submit {
       width: 100%;
       background: var(--gold-gradient);
       border: none;
-      border-radius: 8px;
-      padding: 14px;
-      font-size: 0.9rem;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 0.85rem;
       font-weight: 900;
       text-transform: uppercase;
       color: #000000;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(245, 184, 0, 0.3);
     }
 
-    /* --- TITULO DE SEÇÃO --- */
+    /* --- TITULOS DE SEÇÃO --- */
     .section-header {
       text-align: center;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 900;
       text-transform: uppercase;
-      margin: 24px 0 16px 0;
-      letter-spacing: 0.5px;
+      margin: 16px 0 12px 0;
     }
 
-    /* --- PRÊMIOS --- */
+    /* --- PRÊMIOS COMPACTOS --- */
     .premios-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 30px;
+      gap: 10px;
+      margin-bottom: 20px;
     }
 
-    @media (min-width: 700px) {
-      .premios-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    @media (min-width: 600px) {
+      .premios-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .premio-card {
       background: var(--card-bg);
       color: var(--text-dark);
-      border-radius: 12px;
-      padding: 18px 14px;
+      border-radius: 10px;
+      padding: 12px;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
-    .premio-icon {
-      font-size: 1.8rem;
-      margin-bottom: 6px;
-    }
+    .premio-icon { font-size: 1.4rem; margin-bottom: 4px; }
+    .premio-title { font-size: 0.78rem; font-weight: 900; margin-bottom: 2px; }
+    .premio-desc { font-size: 0.68rem; color: #64748B; line-height: 1.2; }
 
-    .premio-title {
-      font-size: 0.82rem;
-      font-weight: 900;
-      margin-bottom: 4px;
-      color: #0F172A;
-    }
-
-    .premio-desc {
-      font-size: 0.72rem;
-      color: #64748B;
-      line-height: 1.35;
-    }
-
-    /* --- CENTRAL DE MISSÕES (10 MISSÕES) --- */
+    /* --- 10 MISSÕES SOCIAIS CLICÁVEIS --- */
     .missions-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 30px;
+      gap: 8px;
+      margin-bottom: 24px;
     }
 
-    @media (min-width: 700px) {
-      .missions-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
+    @media (min-width: 600px) {
+      .missions-grid { grid-template-columns: repeat(5, 1fr); }
     }
 
     .mission-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-top: 3px solid var(--card-color);
-      border-radius: 10px;
-      padding: 12px 10px;
+      border-radius: 8px;
+      padding: 8px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 110px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .mission-card:active {
+      transform: scale(0.97);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .mission-pts {
       position: absolute;
-      top: 6px;
-      right: 6px;
+      top: 4px;
+      right: 4px;
       background: rgba(0,0,0,0.6);
       color: var(--card-color);
-      font-size: 0.55rem;
-      padding: 2px 5px;
-      border-radius: 4px;
+      font-size: 0.5rem;
+      padding: 1px 4px;
+      border-radius: 3px;
       font-weight: 900;
     }
 
-    .mission-icon {
-      font-size: 1.3rem;
-      margin-bottom: 4px;
-    }
+    .mission-icon { font-size: 1.1rem; margin-bottom: 2px; }
+    .mission-num { font-size: 0.55rem; color: var(--text-muted); }
+    .mission-title { font-size: 0.68rem; font-weight: 800; color: #FFFFFF; }
 
-    .mission-num {
-      font-size: 0.6rem;
-      color: var(--text-muted);
-    }
-
-    .mission-title {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #FFFFFF;
-      line-height: 1.2;
-    }
-
-    /* --- PATROCINADORES --- */
+    /* --- PATROCINADORES / BOTÃO LINK --- */
     .apoiadores-box {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
-    .btn-outline-gold {
+    .btn-patrocinador {
+      display: inline-block;
       background: transparent;
       border: 2px solid var(--gold-main);
       color: var(--gold-main);
-      padding: 10px 20px;
+      padding: 8px 16px;
       border-radius: 20px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
+      text-decoration: none;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
-    /* --- FOOTER --- */
+    .btn-patrocinador:hover {
+      background: var(--gold-main);
+      color: #000;
+    }
+
     footer {
       border-top: 1px solid rgba(255,255,255,0.08);
       width: 100%;
-      padding: 20px 0;
+      padding: 16px 0;
       text-align: center;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: #64748B;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .social-icons a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-size: 1rem;
-      opacity: 0.8;
     }
   </style>
 </head>
@@ -354,35 +290,33 @@
     
     <!-- Topo + Logo -->
     <div class="brand-container">
-      <div class="logo-wrapper">
-        <svg class="star-trail-svg" viewBox="0 0 300 100" fill="none">
-          <path d="M10 80 Q 150 70 240 25" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
-          <path d="M20 85 Q 160 75 245 32" stroke="#E6007E" stroke-width="8" stroke-linecap="round"/>
-          <polygon points="250,5 257,23 276,23 260,34 266,52 250,40 234,52 240,34 224,23 243,23" fill="url(#gold-star-grad)" stroke="#FFF" stroke-width="1"/>
-          <defs>
-            <linearGradient id="gold-star-grad" x1="224" y1="5" x2="276" y2="52" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#FFE866"/>
-              <stop offset="50%" stop-color="#F5B800"/>
-              <stop offset="100%" stop-color="#996600"/>
-            </linearGradient>
-          </defs>
-        </svg>
+      <svg class="star-trail-svg" viewBox="0 0 300 100" fill="none">
+        <path d="M10 80 Q 150 70 240 25" stroke="#0088FF" stroke-width="8" stroke-linecap="round"/>
+        <path d="M20 85 Q 160 75 245 32" stroke="#E6007E" stroke-width="8" stroke-linecap="round"/>
+        <polygon points="250,5 257,23 276,23 260,34 266,52 250,40 234,52 240,34 224,23 243,23" fill="url(#gold-star-grad)"/>
+        <defs>
+          <linearGradient id="gold-star-grad" x1="224" y1="5" x2="276" y2="52" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#FFE866"/>
+            <stop offset="50%" stop-color="#F5B800"/>
+            <stop offset="100%" stop-color="#996600"/>
+          </linearGradient>
+        </defs>
+      </svg>
 
-        <div class="logo-text">
-          <span class="line1">UM PASSO</span>
-          <div class="line2-wrapper">
-            <span class="de">DE</span>
-            <span class="coragem">CORAGEM</span>
-          </div>
+      <div class="logo-text">
+        <span class="line1">UM PASSO</span>
+        <div class="line2-wrapper">
+          <span class="de">DE</span>
+          <span class="coragem">CORAGEM</span>
         </div>
       </div>
     </div>
 
-    <!-- Título Enxuto -->
+    <!-- Título Direto e Frase Solicitada -->
     <h1 class="hero-title">INSCREVA SUA ESCOLA E SEJA PROTAGONISTA DO MAIOR GAME SHOW DA BAHIA!</h1>
     <p class="hero-subtitle">27 Territórios de Identidade — Um passeio pelo conhecimento.</p>
 
-    <!-- Formulário -->
+    <!-- Formulário Proporcional -->
     <div class="form-card">
       <h2>CADASTRO DE ESCOLA E ESTUDANTES</h2>
       <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
@@ -394,145 +328,123 @@
           <input type="tel" class="input-field full-width" placeholder="Telefone / WhatsApp" required />
           <input type="text" class="input-field full-width" placeholder="Mensagem (opcional)" />
         </div>
-        
-        <p class="terms-text">Ao enviar, você concorda com o processamento de dados para fins do evento.</p>
+        <p class="terms-text">Ao enviar, você concorda com o processamento de dados para o evento.</p>
         <button type="submit" class="btn-submit">INSCREVER AGORA</button>
       </form>
     </div>
 
-    <!-- Seção de Prêmios -->
+    <!-- Prêmios -->
     <h2 class="section-header">PRINCIPAIS PRÊMIOS</h2>
     <div class="premios-grid">
       <div class="premio-card">
         <div class="premio-icon">🌐</div>
-        <div class="premio-title">Intercâmbio Internacional para Vencedores (Final)</div>
-        <p class="premio-desc">Reserva de intercâmbio internacional para a equipe campeã estadual.</p>
+        <div class="premio-title">Intercâmbio Internacional</div>
+        <p class="premio-desc">Reserva de intercâmbio para a equipe campeã estadual.</p>
       </div>
-
       <div class="premio-card">
         <div class="premio-icon">✈️</div>
         <div class="premio-title">Viagens Nacionais</div>
-        <p class="premio-desc">Viagens educacionais e culturais pelo Brasil para destaques regionais.</p>
+        <p class="premio-desc">Viagens educacionais pelo Brasil para destaques regionais.</p>
       </div>
-
       <div class="premio-card">
         <div class="premio-icon">🎁</div>
-        <div class="premio-title">Prêmios Regionais / Parcerias Locais</div>
-        <p class="premio-desc">Kits de tecnologia e premiações em parceria com o comércio baiano.</p>
+        <div class="premio-title">Prêmios Regionais</div>
+        <p class="premio-desc">Kits de tecnologia em parceria com o comércio baiano.</p>
       </div>
     </div>
 
-    <!-- 10 Missões Sociais -->
+    <!-- 10 Missões Clicáveis -->
     <h2 class="section-header">CENTRAL DAS 10 MISSÕES SOCIAIS</h2>
     <div class="missions-grid">
-      <div class="mission-card" style="--card-color: #FF3B30;">
+      <div class="mission-card" style="--card-color: #FF3B30;" onclick="abrirMissao('Ação Solidária', 'Arrecadação de alimentos e doações para entidades locais.')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">📦</div>
-        <div>
-          <div class="mission-num">#01</div>
-          <div class="mission-title">Ação Solidária</div>
-        </div>
+        <div class="mission-num">#01</div>
+        <div class="mission-title">Ação Solidária</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #2ECC71;">
+      <div class="mission-card" style="--card-color: #2ECC71;" onclick="abrirMissao('EcoLocal', 'Atividades de plantio e reciclagem comunitária.')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🌳</div>
-        <div>
-          <div class="mission-num">#02</div>
-          <div class="mission-title">EcoLocal</div>
-        </div>
+        <div class="mission-num">#02</div>
+        <div class="mission-title">EcoLocal</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #1E88E5;">
+      <div class="mission-card" style="--card-color: #1E88E5;" onclick="abrirMissao('Conhecimento', 'Quizzes e desafios educativos inter-escolas.')">
         <span class="mission-pts">150 PTS</span>
         <div class="mission-icon">🧠</div>
-        <div>
-          <div class="mission-num">#03</div>
-          <div class="mission-title">Conhecimento</div>
-        </div>
+        <div class="mission-num">#03</div>
+        <div class="mission-title">Conhecimento</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #880E4F;">
+      <div class="mission-card" style="--card-color: #880E4F;" onclick="abrirMissao('Corrente pelo Bem', 'Campanha de incentivo à doação de sangue.')">
         <span class="mission-pts">20 PTS/Doador</span>
         <div class="mission-icon">🩸</div>
-        <div>
-          <div class="mission-num">#04</div>
-          <div class="mission-title">Corrente pelo Bem</div>
-        </div>
+        <div class="mission-num">#04</div>
+        <div class="mission-title">Corrente pelo Bem</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #8E44AD;">
+      <div class="mission-card" style="--card-color: #8E44AD;" onclick="abrirMissao('Cidadania Digital', 'Combate às fake news e conscientização nas redes.')">
         <span class="mission-pts">80 PTS</span>
         <div class="mission-icon">📱</div>
-        <div>
-          <div class="mission-num">#05</div>
-          <div class="mission-title">Cidadania Digital</div>
-        </div>
+        <div class="mission-num">#05</div>
+        <div class="mission-title">Cidadania Digital</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #E67E22;">
+      <div class="mission-card" style="--card-color: #E67E22;" onclick="abrirMissao('Peludos & Protegidos', 'Ações de apoio e arrecadação de ração para ONGs de animais.')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🐾</div>
-        <div>
-          <div class="mission-num">#06</div>
-          <div class="mission-title">Peludos & Protegidos</div>
-        </div>
+        <div class="mission-num">#06</div>
+        <div class="mission-title">Peludos & Protegidos</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #F1C40F;">
+      <div class="mission-card" style="--card-color: #F1C40F;" onclick="abrirMissao('Gerações', 'Visitas e integração com asilos e centros de idosos.')">
         <span class="mission-pts">120 PTS</span>
         <div class="mission-icon">👵</div>
-        <div>
-          <div class="mission-num">#07</div>
-          <div class="mission-title">Gerações</div>
-        </div>
+        <div class="mission-num">#07</div>
+        <div class="mission-title">Gerações</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #607D8B;">
+      <div class="mission-card" style="--card-color: #607D8B;" onclick="abrirMissao('RevitaBairro', 'Pintura e melhoria de espaços comunitários.')">
         <span class="mission-pts">150 PTS</span>
         <div class="mission-icon">🛠️</div>
-        <div>
-          <div class="mission-num">#08</div>
-          <div class="mission-title">RevitaBairro</div>
-        </div>
+        <div class="mission-num">#08</div>
+        <div class="mission-title">RevitaBairro</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #FF4081;">
+      <div class="mission-card" style="--card-color: #FF4081;" onclick="abrirMissao('Cultura p/ Todos', 'Apresentações artísticas e valorização da cultura local.')">
         <span class="mission-pts">100 PTS</span>
         <div class="mission-icon">🎨</div>
-        <div>
-          <div class="mission-num">#09</div>
-          <div class="mission-title">Cultura p/ Todos</div>
-        </div>
+        <div class="mission-num">#09</div>
+        <div class="mission-title">Cultura p/ Todos</div>
       </div>
 
-      <div class="mission-card" style="--card-color: #00BCD4;">
+      <div class="mission-card" style="--card-color: #00BCD4;" onclick="abrirMissao('Minha Cidade', 'Projetos de impacto histórico e turístico local.')">
         <span class="mission-pts">130 PTS</span>
         <div class="mission-icon">💡</div>
-        <div>
-          <div class="mission-num">#10</div>
-          <div class="mission-title">Minha Cidade</div>
-        </div>
+        <div class="mission-num">#10</div>
+        <div class="mission-title">Minha Cidade</div>
       </div>
     </div>
 
-    <!-- Patrocinadores -->
+    <!-- Patrocinadores com Link Direto Clicável -->
     <div class="apoiadores-box">
       <h2 class="section-header">PATROCINADORES LOCAIS E GLOBAIS</h2>
-      <button class="btn-outline-gold">RESERVE SUA JANELA NO PAINEL</button>
+      <a href="mailto:contato@umpassodecoragem.com.br?subject=Quero%20ser%20Patrocinador" class="btn-patrocinador">
+        RESERVE SUA JANELA NO PAINEL
+      </a>
     </div>
 
   </div>
 
-  <!-- Rodapé -->
   <footer>
-    <div class="social-icons">
-      <a href="#">🌐</a>
-      <a href="#">📷</a>
-      <a href="#">🎥</a>
-    </div>
     <p>© 2026 UM PASSO DE CORAGEM. TODOS OS DIREITOS RESERVADOS.</p>
   </footer>
 
+  <script>
+    function abrirMissao(nome, descricao) {
+      alert("Missão: " + nome + "\n\nDetalhes: " + descricao);
+    }
+  </script>
 </body>
 </html>

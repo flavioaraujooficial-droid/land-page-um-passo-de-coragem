@@ -1,28 +1,539 @@
-Crie a Landing Page para "Um Passo de Coragem" (umpassodecoragem.com.br) utilizando a identidade visual oficial da marca.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Um Passo de Coragem - Game Show Social 2026</title>
+  <style>
+    :root {
+      --bg-dark: #0b0e1a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --gold-accent: #F5B800;
+      --magenta-glow: #e11d48;
+      --blue-glow: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-family: system-ui, -apple-system, sans-serif;
+    }
 
-Diretrizes de Design & Paleta de Cores (Extraídas da Logo):
-- Background Principal: Azul marinho ultra escuro / Dark Navy (#0B0E1A ou semelhante) com leves brilhos/glows em azul e magenta nos fundos.
-- Cores de Destaque / Accent: Amarelo Ouro Solar (#F5B800) para a Estrela/Botões de Ação Principais e Branco com brilho para títulos.
-- Degradês / Detalhes: Linhas curvas e gradientes em Rosa/Magenta e Azul Elétrico para divisores e contornos de cards.
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-Estrutura Visual:
-1. Header:
-   - Logo "Um Passo de Coragem" centralizada/à esquerda.
-   - Menu simples de navegação em texto branco.
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(225, 29, 72, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(2, 132, 199, 0.15) 0%, transparent 40%);
+    }
 
-2. Hero Section:
-   - Headline: "INSCREVA SUA ESCOLA E SEJA PROTAGONISTA DO MAIOR GAME SHOW DA BAHIA!"
-   - Sub-headline detalhando o circuito dos 30 territórios da Bahia e a 31ª Grande Final.
-   - Formulário em alta conversão no centro (Card Branco / Light Glassmorphism) para cadastro de Escolas/Estudantes com botão de destaque Ouro (#F5B800) "INSCREVER AGORA".
+    /* Container Centralizado Padrão */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
 
-3. Seção Principais Prêmios:
-   - 3 Cards limpos com ícones de destaque:
-     1. Intercâmbio Internacional para Vencedores (Final).
-     2. Viagens Nacionais.
-     3. Prêmios Regionais / Parcerias Locais (Nordeste).
+    /* Header */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 14, 26, 0.8);
+    }
 
-4. Seção do Painel & Patrocinadores:
-   - Formulário dedicado para Empresas/Comércio Local: "RESERVE SUA JANELA NO PAINEL" com opção de seleção entre cota Local e Global.
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-5. Footer:
-   - Links para redes sociais, mapa dos territórios e copyright.
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-star {
+      color: var(--gold-accent);
+      font-size: 1.5rem;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .badge-territorio {
+      display: inline-block;
+      background: linear-gradient(90deg, #e11d48, #0284c7);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      color: var(--gold-accent);
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+    }
+
+    /* Formulário Glassmorphism */
+    .form-card {
+      background: rgba(255, 255, 255, 0.95);
+      color: #0f172a;
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .form-card h3 {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      font-size: 0.9rem;
+      color: #0f172a;
+    }
+
+    .btn-gold {
+      width: 100%;
+      background: var(--gold-accent);
+      color: #000;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      margin-top: 10px;
+    }
+
+    .btn-gold:hover {
+      background: #e0a800;
+      transform: translateY(-2px);
+    }
+
+    /* Seção Prêmios */
+    .section-title {
+      text-align: center;
+      margin: 60px 0 40px 0;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .premios-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .premios-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .premio-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid var(--gold-accent);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .premio-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .premio-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .premio-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Missões Grid */
+    .missions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 900px) {
+      .missions-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .mission-card {
+      background: var(--card-bg);
+      border-top: 4px solid var(--card-color);
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .mission-pts {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.5);
+      color: var(--card-color);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+    }
+
+    /* Apoiadores e Patrocinadores */
+    .patrocinio-box {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo-container">
+        <span class="logo-star">★</span>
+        <span>UM PASSO DE CORAGEM</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#inscricao">Inscrição</a></li>
+          <li><a href="#premios">Prêmios</a></li>
+          <li><a href="#missoes">Missões</a></li>
+          <li><a href="#apoiadores">Apoiadores</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section / Inscrição -->
+  <section id="inscricao" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge-territorio">27 Territórios de Identidade • 30 Edições + 31ª Grande Final</span>
+        <h1 class="hero-title">Inscreva sua escola e seja protagonista do <span>maior Game Show da Bahia!</span></h1>
+        <p class="hero-sub">Um circuito cultural e educacional inesquecível. Cumpra missões sociais, mobilize sua comunidade e garanta sua vaga na grande final com visibilidade em todo o estado.</p>
+      </div>
+
+      <div class="form-card">
+        <h3>Cadastro de Escola / Estudantes</h3>
+        <form onsubmit="alert('Inscrição enviada com sucesso!'); return false;">
+          <div class="form-group">
+            <label>Nome da Escola / Instituição</label>
+            <input type="text" placeholder="Ex: Colégio Estadual..." required />
+          </div>
+          <div class="form-group">
+            <label>Nome da Equipe</label>
+            <input type="text" placeholder="Ex: Guerreiros da Coragem" required />
+          </div>
+          <div class="form-group">
+            <label>Território de Identidade / Cidade</label>
+            <input type="text" placeholder="Sua Cidade na Bahia" required />
+          </div>
+          <div class="form-group">
+            <label>Professor Orientador (Mentor)</label>
+            <input type="text" placeholder="Nome completo do Professor" required />
+          </div>
+          <div class="form-group">
+            <label>WhatsApp do Líder / Responsável</label>
+            <input type="tel" placeholder="(71) 90000-0000" required />
+          </div>
+          <button type="submit" class="btn-gold">Inscrever Agora</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Prêmios -->
+  <section id="premios" class="container">
+    <div class="section-title">
+      <h2>Principais Prêmios</h2>
+    </div>
+    <div class="premios-grid">
+      <div class="premio-card">
+        <div class="premio-icon">✈️</div>
+        <div class="premio-title">Intercâmbio Internacional</div>
+        <p class="premio-desc">Experiência internacional inesquecível para os vencedores da 31ª Grande Final do Game Show.</p>
+      </div>
+      <div class="premio-card">
+        <div class="premio-icon">🗺️</div>
+        <div class="premio-title">Viagens Nacionais</div>
+        <p class="premio-desc">Roteiros culturais e educacionais pelo Brasil para as melhores equipes classificadas nos territórios.</p>
+      </div>
+      <div class="premio-card">
+        <div class="premio-icon">🏆</div>
+        <div class="premio-title">Prêmios Regionais</div>
+        <p class="premio-desc">Kits tecnológicos, troféus e bolsas em parceria com empresas e instituições locais do Nordeste.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Central de Missões -->
+  <section id="missoes" class="container">
+    <div class="section-title">
+      <h2>Central das 10 Missões Sociais</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Cumpra as missões para pontuar e classificar sua equipe.</p>
+    </div>
+
+    <div class="missions-grid">
+      <div class="mission-card" style="--card-color: #FF3B30;">
+        <span class="mission-pts">100 PTS</span>
+        <div style="font-size: 1.5rem;">📦</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#01</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Ação Solidária</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Arrecadação de Alimentos</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #2ECC71;">
+        <span class="mission-pts">100 PTS</span>
+        <div style="font-size: 1.5rem;">🌳</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#02</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">EcoLocal</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Mutirão e Reciclagem</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #1E88E5;">
+        <span class="mission-pts">150 PTS</span>
+        <div style="font-size: 1.5rem;">🧠</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#03</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Conhecimento</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Oficinas e Palestras</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #880E4F;">
+        <span class="mission-pts">20 PTS/Doador</span>
+        <div style="font-size: 1.5rem;">🩸</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#04</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Corrente pelo Bem</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Doação de Sangue</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #8E44AD;">
+        <span class="mission-pts">80 PTS</span>
+        <div style="font-size: 1.5rem;">📱</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#05</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Cidadania Digital</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Campanha em Vídeo</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #E67E22;">
+        <span class="mission-pts">100 PTS</span>
+        <div style="font-size: 1.5rem;">🐾</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#06</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Peludos e Protegidos</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Causa Animal</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #F1C40F;">
+        <span class="mission-pts">120 PTS</span>
+        <div style="font-size: 1.5rem;">👵</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#07</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Gerações</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Apoio aos Idosos</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #607D8B;">
+        <span class="mission-pts">150 PTS</span>
+        <div style="font-size: 1.5rem;">🛠️</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#08</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">RevitaBairro</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Melhoria Urbana</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #FF4081;">
+        <span class="mission-pts">100 PTS</span>
+        <div style="font-size: 1.5rem;">🎨</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#09</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Cultura p/ Todos</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Arte na Comunidade</div>
+        </div>
+      </div>
+
+      <div class="mission-card" style="--card-color: #00BCD4;">
+        <span class="mission-pts">130 PTS</span>
+        <div style="font-size: 1.5rem;">💡</div>
+        <div>
+          <div style="font-size: 0.65rem; color: #64748b;">#10</div>
+          <div style="font-weight: 700; font-size: 0.85rem;">Minha Cidade</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted);">Inovação Urbana</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apoiadores e Patrocinadores -->
+  <section id="apoiadores" class="container">
+    <div class="section-title">
+      <h2>Seja um Apoiador / Patrocinador</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Conecte sua marca ao maior movimento de impacto social jovem da Bahia.</p>
+    </div>
+
+    <div class="patrocinio-box">
+      <h3 style="text-align: center; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase;">Reserve sua Janela no Painel</h3>
+      <form onsubmit="alert('Solicitação recebida!'); return false;">
+        <div class="form-group">
+          <label style="color: var(--text-muted);">Nome da Empresa / Razão Social</label>
+          <input type="text" placeholder="Sua Empresa" style="background: #0f172a; border-color: #334155; color: #fff;" required />
+        </div>
+        <div class="form-group">
+          <label style="color: var(--text-muted);">Escolha a Cota de Exibição</label>
+          <select style="background: #0f172a; border-color: #334155; color: #fff;" required>
+            <option value="">Selecione uma Cota</option>
+            <option value="local">Cota Regional / Local</option>
+            <option value="global">Cota Master / Estadual</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="color: var(--text-muted);">E-mail ou WhatsApp para Contato</label>
+          <input type="text" placeholder="Seu contato" style="background: #0f172a; border-color: #334155; color: #fff;" required />
+        </div>
+        <button type="submit" class="btn-gold">Reservar Espaço</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      Um Passo de Coragem © 2026 • Todos os direitos reservados.
+    </div>
+  </footer>
+
+</body>
+</html>
